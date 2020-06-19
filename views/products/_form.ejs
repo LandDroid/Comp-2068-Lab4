@@ -1,0 +1,34 @@
+<form action="<%= (typeof actionPath === 'undefined') ? '/products' : actionPath %>", method="POST">
+  <% if (typeof actionPath !== 'undefined') { %>
+    <input type="hidden" name="id" value="<%= formData.id %>">
+  <% } %>
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" name="name" class="form-control" value="<%= formData.name %>">
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea name="description" class="form-control summernote">
+      <%= formData.description %>
+    </textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input type="number" name="price" class="form-control" value="<%= formData.price %>">
+  </div>
+
+  <div class="form-group">
+    <label for="status">Status</label>
+    <select name="status" class="form-control">
+      <option value="DRAFT">Draft</option>
+      <option <%= formData.status && formData.status === 'PUBLISHED' ? 'selected' : null %> value="PUBLISHED">Published</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-dark">Submit</button>
+  </div>
+</form>
